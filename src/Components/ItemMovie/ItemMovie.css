@@ -1,0 +1,62 @@
+.card-movie {
+    margin: 0;
+    width: 451px;
+    height: 279px;
+    /* background-color: red; */
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-movie_text {
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.card-movie h2 {
+    margin: 0;
+    padding-bottom: 7px;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.card-movie p {
+    margin: 0;
+    padding: 0;
+
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.card-movie img {
+    margin: 0;
+    height: 279px;
+}
+
+.card-movie .card-movie_date {
+    padding-bottom: 7px;
+    font-size: 12px;
+    line-height: 22px;
+    color: rgba(130, 126, 126, 1);
+}
+
+.card-movie_genre {
+    padding-bottom: 7px;
+}
+
+.card-movie .card-movie_genre-item {
+    padding-top: 1px;
+    padding-right: 2px;
+    padding-left: 4px;
+    padding-bottom: 2px;
+    background-color: rgba(250, 250, 250, 1);
+    border: 1px solid rgba(217, 217, 217, 1);
+    border-radius: 2px;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.52px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.card-movie_overview {
+}
