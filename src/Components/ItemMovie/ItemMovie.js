@@ -1,51 +1,63 @@
 import React, { Component } from "react";
-import { Col, Row } from "antd";
+import { Col } from "antd";
 
 import "./ItemMovie.css";
+import Spinner from "../Spinner/Spinner";
+import MovieView from "./MovieView";
+import SwapiService from "../Services/Swapi-service";
+import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
 
 export default class ItemMovie extends Component {
-    /* state = {
-        movie: [{ overview: null }],
-    }; */
+    swapiService = new SwapiService();
 
-    shortText(text) {
-        if (text.length > 200) {
-            const trimmedText = text.slice(0, 200);
-            const lastSpaceIndex = trimmedText.lastIndexOf(" ");
-            if (lastSpaceIndex > -1) {
-                return trimmedText.slice(0, lastSpaceIndex) + "...";
-            }
-            return trimmedText + "...";
-        }
-        return text;
+    state = {
+        movies: [],
+        loading: true,
+        error: false,
+    };
+
+    constructor(props) {
+        super(props);
+        this.updateMovies();
     }
 
-    render() {
-        const { movie } = this.props;
+    updateMovies() {
+        this.swapiService
+            .getAllMovies()
+            .then((data) => {
+                this.setState({
+                    movies: data.results,
+                    loading: false,
+                });
+            })
+            .catch(this.onError);
+    }
 
-        return (
+    content = (movie, loading) => {
+        return !loading ? <MovieView movie={movie} /> : null;
+    };
+
+    onError = (err) => {
+        this.setState({
+            error: true,
+            loading: false,
+        });
+    };
+
+    render() {
+        const { movies, loading, error } = this.state;
+        console.log(movies);
+        const spinner = loading ? <Spinner /> : null;
+        const errorMessage = error ? <ErrorIndicator /> : null;
+
+        return movies.map((movie) => (
             <Col key={movie.id} span={12}>
                 <div className="card-movie">
-                    <Row>
-                        <Col span={10}>
-                            <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} />
-                        </Col>
-                        <Col className="card-movie_text" span={13}>
-                            <h2 className="card-movie_title">{movie.title}</h2>
-                            <p className="card-movie_date">{movie.release_date}</p>
-                            <Row className="card-movie_genre" gutter={8}>
-                                <Col span={6}>
-                                    <p className="card-movie_genre-item">Action</p>
-                                </Col>
-                                <Col span={6}>
-                                    <p className="card-movie_genre-item">Action</p>
-                                </Col>
-                            </Row>
-                            <p className="card-movie_overview">{this.shortText(movie.overview)}</p>
-                        </Col>
-                    </Row>
+                    {errorMessage}
+                    {spinner}
+                    {this.content(movie, loading)}
                 </div>
             </Col>
-        );
+        ));
     }
 }
