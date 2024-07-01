@@ -1,22 +1,20 @@
 import React, { Component } from "react";
 import { Pagination, Row, Input } from "antd";
-
+import _ from "lodash";
 import "./AppMain.css";
 
 import ItemMovie from "../ItemMovie/ItemMovie";
 
-const { Search } = Input;
 export class AppMain extends Component {
     state = {
         page: 1,
         query: "",
     };
-    handleSearch = (query) => {
-        console.log(query);
-        this.setState({ query, page: 1 });
-    };
+    handleSearch = _.debounce((query) => {
+        this.setState({ query: query, page: 1 });
+    }, 500);
     render() {
-        const { page } = this.state;
+        const { page, query } = this.state;
         const getPage = (page) => {
             this.setState({
                 page: page,
@@ -24,11 +22,17 @@ export class AppMain extends Component {
         };
         return (
             <React.Fragment>
-                <Search placeholder="Type to search..." onChange={this.handleSearch} />
+                <Input
+                    className="app-main-search"
+                    placeholder="Type to search..."
+                    onChange={(e) => {
+                        this.handleSearch(e.target.value);
+                    }}
+                />
                 <Row gutter={[40, 40]}>
-                    <ItemMovie page={page} />
+                    <ItemMovie page={page} query={query} />
                 </Row>
-                <Pagination defaultCurrent={1} total={50} onChange={getPage} />
+                <Pagination className="app-main-pagination" defaultCurrent={1} total={50} onChange={getPage} />
             </React.Fragment>
         );
     }

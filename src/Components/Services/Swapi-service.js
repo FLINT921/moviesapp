@@ -17,4 +17,8 @@ export default class SwapiService {
     getMovie(id) {
         return this.getResource(`/movie/${id}`);
     }
+
+    getSearchMovies(query, page) {
+        return this.getResource(`/search/movie?query=${query}&page=${page}`);
+    }
 }

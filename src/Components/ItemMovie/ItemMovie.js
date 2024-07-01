@@ -14,16 +14,43 @@ export default class ItemMovie extends Component {
     };
 
     componentDidMount() {
-        const { page } = this.props;
-        this.updateMovies(page);
+        const { page, query } = this.props;
+        if (query) {
+            this.interval = setInterval(this.searchMovie(query, page), 10000);
+        } else {
+            this.updateMovies(page);
+        }
     }
 
     componentDidUpdate(prevProps) {
-        const { page } = this.props;
-        if (page !== prevProps.page) {
+        const { page, query } = this.props;
+        if (page !== prevProps.page || query !== prevProps.query) {
             this.setState({ loading: true, error: false });
-            this.updateMovies(page);
+            if (query) {
+                this.searchMovie(query, page);
+            } else {
+                this.updateMovies(page);
+            }
         }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    searchMovie(query, page) {
+        this.swapiService
+            .getSearchMovies(query, page)
+            .then((data) => {
+                this.setState({
+                    movies: data.results,
+                    loading: false,
+                });
+            })
+            .catch((error) => {
+                console.error("Failed to fetch movies:", error);
+                this.setState({ error: true, loading: false });
+            });
     }
 
     updateMovies(page) {
@@ -48,7 +75,8 @@ export default class ItemMovie extends Component {
     };
     render() {
         const { movies, loading, error } = this.state;
-        console.log(movies, loading, error);
+        const { query } = this.props;
+        console.log(movies, loading, error, query);
         const errorMessage = error ? <Alert message="Error 0_0" description="We are solving this problem, come back later" type="error" /> : null;
         const spinner = loading ? <Spin size="large" /> : null;
         const content = (movie, loading) => {
@@ -63,6 +91,7 @@ export default class ItemMovie extends Component {
                         <div className="card-movie">{content(movie, loading)}</div>
                     </Col>
                 ))}
+                {}
             </React.Fragment>
         );
     }
