@@ -1,6 +1,6 @@
 export default class SwapiService {
     _apiBase = "https://api.themoviedb.org/3";
-    _apiKey = "?api_key=8a726082f3d83f3df0b09bbac8ae3d31";
+    _apiKey = "&api_key=8a726082f3d83f3df0b09bbac8ae3d31";
     async getResource(url) {
         const res = await fetch(`${this._apiBase}${url}${this._apiKey}`);
 
@@ -10,8 +10,8 @@ export default class SwapiService {
         return await res.json();
     }
 
-    getAllMovies() {
-        return this.getResource(`/discover/movie`);
+    getAllMovies(page) {
+        return this.getResource(`/discover/movie?&page=${page}`);
     }
 
     getMovie(id) {

@@ -34,7 +34,6 @@ const MovieView = ({ movie }) => {
                     <p className="card-movie_overview">{shortText(movie.overview)}</p>
                 </Col>
             </Row>
-            ;
         </React.Fragment>
     );
 };
