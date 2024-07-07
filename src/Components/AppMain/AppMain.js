@@ -82,7 +82,7 @@ export class AppMain extends Component {
           </Col>
         </Row>
         {this.drawPage()}
-        <Pagination className='app-main-pagination' defaultCurrent={1} total={50} onChange={getPage} />
+        <Pagination className='app-main-pagination' align='center' defaultCurrent={1} total={50} onChange={getPage} />
       </React.Fragment>
     );
   }

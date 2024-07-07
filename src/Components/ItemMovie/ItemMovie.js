@@ -110,6 +110,7 @@ export default class ItemMovie extends Component {
 
   render() {
     const { movies, loading, error } = this.state;
+    console.log(movies);
     const errorMessage = error ? (
       <Alert message='Error 0_0' description='We are solving this problem, come back later' type='error' />
     ) : null;

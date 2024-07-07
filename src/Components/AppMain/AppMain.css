@@ -1,37 +1,36 @@
 .app-main-search {
-    margin-bottom: 34px;
-    height: 40px;
+  margin-bottom: 34px;
+  height: 40px;
 
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
 }
 
 .app-main-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 36px;
-    padding-bottom: 17px;
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+  padding-bottom: 17px;
 }
 
 .center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .app-main-button {
-    width: 64.64px;
-    height: 53.77px;
-    margin-bottom: 19px;
-    background: none;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-    font-size: 14px;
-    line-height: 22px;
-    align-items: center;
-    color: rgba(0, 0, 0, 0.65);
+  width: 64.64px;
+  height: 53.77px;
+  margin-bottom: 19px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  font-size: 14px;
+  line-height: 22px;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.65);
 }
 
 .active {
-    border-bottom: 2.24px solid rgba(24, 144, 255, 1);
+  border-bottom: 2.24px solid rgba(24, 144, 255, 1);
 }
