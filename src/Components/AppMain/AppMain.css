@@ -14,3 +14,24 @@
     margin-top: 36px;
     padding-bottom: 17px;
 }
+
+.center {
+    justify-content: center;
+}
+
+.app-main-button {
+    width: 64.64px;
+    height: 53.77px;
+    margin-bottom: 19px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    font-size: 14px;
+    line-height: 22px;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.active {
+    border-bottom: 2.24px solid rgba(24, 144, 255, 1);
+}

@@ -44,10 +44,10 @@
 }
 
 .card-movie .card-movie_genre-item {
-    padding-top: 1px;
-    padding-right: 2px;
-    padding-left: 4px;
-    padding-bottom: 2px;
+    width: auto;
+    height: 20px;
+    margin-right: 8px;
+    margin-bottom: 8px;
     background-color: rgba(250, 250, 250, 1);
     border: 1px solid rgba(217, 217, 217, 1);
     border-radius: 2px;
@@ -56,4 +56,15 @@
     font-size: 12px;
     line-height: 14.52px;
     color: rgba(0, 0, 0, 0.65);
+}
+
+.card-movie .card-movie_genre-item p {
+    text-align: center;
+    line-height: 14.52px;
+}
+
+.card-movie_rate {
+    position: absolute;
+    top: 248px;
+    font-size: 15px;
 }

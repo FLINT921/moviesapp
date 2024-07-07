@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./Components/App/App";
-import SwapiService from "./Components/Services/Swapi-service";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import './index.css';
+import App from './Components/App/App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
